@@ -1,0 +1,49 @@
+<!--
+  Generated template for the PayPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>支付页面</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+      <ion-row style="height:80px;" justify-content-center>
+        <ion-col col-2>
+          <ion-icon name='close'></ion-icon>
+        </ion-col>
+        <ion-col col-4>确认付款</ion-col>
+        <ion-col col-2>
+          <ion-icon name='help'></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row style='height:80px;' justify-content-center>
+        <ion-col col-4>
+          <h4 style="color:red">${{totalPirce}}</h4>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>支付帐号</ion-col>
+        <ion-col col-4 offset-4>kk@qq.com</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>付款帐号</ion-col>
+        <ion-col col-4 offset-4>花呗></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button (click)="showLoading()"  color='secondary' block>支付</button>
+        </ion-col>
+        <ion-col offset-2 col-4>
+          <button ion-button  color='primary' block (click)="goBack()" >返回</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,65 @@
+<!--
+  Generated template for the IndexPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar>
+    <ion-title>index</ion-title>
+  </ion-navbar>-->
+  <ion-grid>
+    <ion-row>
+      <ion-col col-2>
+        <button clear ion-button color='dark'>
+          <ion-icon name='camera'></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col>
+        <ion-searchbar></ion-searchbar>
+      </ion-col>
+      <ion-col col-2>
+        <button clear ion-button color='dark'>
+          <ion-icon name='chatboxes'></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-slides *ngIf='carouselItems.length>0' style="height:100px;" autoplay=1000 effect=fade loop='true' speed=500 pager>
+    <ion-slide *ngFor='let items of carouselItems;let myIndex=index'>
+      <img [navPush]='datailPage' [navParams]='{id:recommendedItems[myIndex].cid}' [src]="'assets/'+items.img" alt="">
+    </ion-slide>
+  </ion-slides>
+
+  <!--最新上市 [navPush]='datailPage' [navParams]='{id:recommendedItems[myIndex].pid}'-->
+  <p>最新上市</p>
+  <ion-scroll scrollX style="white-space:nowrap;height:200px;">
+    <ion-card *ngFor='let items of newArrivalItems;let myIndex=index'  style="text-align:center;width:260px; display:inline-block">
+      <img [navPush]='datailPage' [navParams]='{id:newArrivalItems[myIndex].pid}' style='margin-left:80px;width:100px;' [src]="'assets/'+items.pic" alt="">
+      <ion-card-content style="text-align:center">{{items.title}}</ion-card-content>
+    </ion-card>
+  </ion-scroll>
+
+  <!--热销产品-->
+  <p>热销产品</p>
+  <ion-list *ngIf='recommendedItems.length>0'>
+    <ion-item [navPush]='datailPage' [navParams]='{id:recommendedItems[myIndex].pid}' *ngFor='let items of recommendedItems;let myIndex=index'>
+      <ion-thumbnail item-start>
+        <img [src]="'assets/'+items.pic" alt="">
+      </ion-thumbnail>
+      <h4>{{items.title}}</h4>
+      <p>{{items.details}}</p>
+      <button item-end ion-button clear color='dark'>
+        <ion-icon name='cart'></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>
